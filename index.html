@@ -31,33 +31,33 @@
                 <a-asset-item id="asset3" src="assets/asset3.glb"></a-asset-item>
                 <a-asset-item id="asset4" src="assets/asset4.glb"></a-asset-item>
 
-                <!-- Load MP4 video -->
-                <video id="video5" src="assets/video5.mp4" autoplay loop="true" crossorigin="anonymous"></video>
+                <!-- Load MP4 video with iPhone compatibility -->
+                <video id="video5" src="assets/video5.mp4" autoplay playsinline loop="true" crossorigin="anonymous"></video>
             </a-assets>
 
-            <!-- Marker 1 with GLB asset 1, offset position -->
-            <a-marker id="marker" type="pattern" preset="custom" url="assets/marker1.patt" emitevents="true">
-                <a-entity id="model1" position="-0.1 0 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset1" gesture-handler></a-entity>
+            <!-- Marker 1 with GLB asset 1, closer offset position -->
+            <a-marker id="marker1" type="pattern" preset="custom" url="assets/marker1.patt" emitevents="true">
+                <a-entity id="model1" position="-0.05 0 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset1" gesture-handler></a-entity>
             </a-marker>
 
-            <!-- Marker 2 with GLB asset 2, offset position -->
+            <!-- Marker 2 with GLB asset 2, closer offset position -->
             <a-marker id="marker2" type="pattern" preset="custom" url="assets/marker2.patt" emitevents="true">
-                <a-entity id="model2" position="0.1 0 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset2" gesture-handler></a-entity>
+                <a-entity id="model2" position="0.05 0 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset2" gesture-handler></a-entity>
             </a-marker>
 
-            <!-- Marker 3 with GLB asset 3, offset position -->
+            <!-- Marker 3 with GLB asset 3, closer offset position -->
             <a-marker id="marker3" type="pattern" preset="custom" url="assets/marker3.patt" emitevents="true">
-                <a-entity id="model3" position="0 0.1 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset3" gesture-handler></a-entity>
+                <a-entity id="model3" position="0 0.05 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset3" gesture-handler></a-entity>
             </a-marker>
 
-            <!-- Marker 4 with GLB asset 4, offset position -->
+            <!-- Marker 4 with GLB asset 4, closer offset position -->
             <a-marker id="marker4" type="pattern" preset="custom" url="assets/marker4.patt" emitevents="true">
-                <a-entity id="model4" position="0 -0.1 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset4" gesture-handler></a-entity>
+                <a-entity id="model4" position="0 -0.05 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset4" gesture-handler></a-entity>
             </a-marker>
 
-            <!-- Marker 5 with MP4 video, offset position -->
+            <!-- Marker 5 with MP4 video, closer offset position -->
             <a-marker id="marker5" type="pattern" preset="custom" url="assets/marker5.patt" emitevents="true">
-                <a-video src="#video5" position="0 0 0.1" width="1.5" height="0.85" scale="1 1 1"></a-video>
+                <a-video src="#video5" position="0 0 0.05" width="1.5" height="0.85" scale="1 1 1"></a-video>
             </a-marker>
 
             <!-- Camera -->
