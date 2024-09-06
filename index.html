@@ -31,8 +31,8 @@
                 <a-asset-item id="asset3" src="assets/asset3.glb"></a-asset-item>
                 <a-asset-item id="asset4" src="assets/asset4.glb"></a-asset-item>
 
-                <!-- Load MP4 video with iPhone compatibility -->
-                <video id="video5" src="assets/video6.mp4" autoplay playsinline muted loop="true" crossorigin="anonymous"></video>
+                <!-- Load MP4 video with iOS compatibility -->
+                <video id="video5" src="assets/video5.mp4" playsinline loop crossorigin="anonymous"></video>
             </a-assets>
 
             <!-- Marker 1 with GLB asset 1, adjusted offset position -->
@@ -55,13 +55,35 @@
                 <a-entity id="model4" position="0 -0.08 0" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset4" gesture-handler></a-entity>
             </a-marker>
 
-            <!-- Marker 5 with MP4 video, adjusted offset position, rotation for forward-facing -->
+            <!-- Marker 5 with MP4 video, Z-axis rotation, user interaction for playback -->
             <a-marker id="marker5" type="pattern" preset="custom" url="assets/marker5.patt" emitevents="true">
-                <a-video src="#video5" position="0 0 0.1" rotation="-90 0 0" width="1.5" height="0.85" scale="1 1 1"></a-video>
+                <a-video src="#video5" position="0 0 0.1" rotation="0 0 90" width="1.5" height="0.85" scale="1 1 1"></a-video>
             </a-marker>
 
             <!-- Camera -->
             <a-entity camera></a-entity>
         </a-scene>
+
+        <script>
+            // Play video on user interaction to enable audio
+            const video = document.getElementById('video5');
+            video.addEventListener('loadeddata', function() {
+                video.play().then(() => {
+                    video.muted = false;
+                    video.volume = 1.0;
+                }).catch(error => {
+                    // User gesture might be required
+                    console.log('User gesture needed to play video');
+                });
+            });
+
+            // In case a user gesture is needed to start video playback
+            document.addEventListener('click', function() {
+                video.play().then(() => {
+                    video.muted = false;
+                    video.volume = 1.0;
+                });
+            });
+        </script>
     </body>
 </html>
