@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
     <head>
-        <!-- A-Frame and AR.js Libraries -->
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
@@ -10,11 +9,6 @@
     </head>
 
     <body style="margin: 0; overflow: hidden;">
-        <!-- Display "Nakamura Robo Project" -->
-        <h1 style="position: absolute; width: 100%; text-align: center; z-index: 10; color: white; font-size: 2em;">
-            Nakamura Robo Project
-        </h1>
-
         <a-scene
             vr-mode-ui="enabled: false;"
             loading-screen="enabled: false;"
@@ -25,42 +19,32 @@
             gesture-detector
         >
             <a-assets>
-                <!-- Load GLB assets -->
-                <a-asset-item id="asset1" src="assets/asset1.glb"></a-asset-item>
-                <a-asset-item id="asset2" src="assets/asset2.glb"></a-asset-item>
-                <a-asset-item id="asset3" src="assets/asset3.glb"></a-asset-item>
-                <a-asset-item id="asset4" src="assets/asset4.glb"></a-asset-item>
-
-                <!-- Load MP4 video -->
-                <video id="video5" src="assets/video5.mp4" autoplay loop="true" crossorigin="anonymous"></video>
+                <a-asset-item
+                    id="animated-asset"
+                    src="assets/asset1.glb"
+                ></a-asset-item>
             </a-assets>
 
-            <!-- Marker 1 with GLB asset 1 -->
-            <a-marker id="marker1" type="pattern" preset="custom" url="assets/marker1.patt" emitevents="true">
-                <a-entity id="model1" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset1" gesture-handler></a-entity>
+            <a-marker
+                id="animated-marker"
+                type="pattern"
+                preset="custom"
+                url="assets/marker1.patt"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                id="markerA"
+            >
+                <a-entity
+                    id="bowser-model"
+                    scale="0.7000000000000001 0.7000000000000001 0.7000000000000001"
+                    animation-mixer="loop: repeat"
+                    gltf-model="#animated-asset"
+                    class="clickable"
+                    gesture-handler
+                ></a-entity>
             </a-marker>
 
-            <!-- Marker 2 with GLB asset 2 -->
-            <a-marker id="marker2" type="pattern" preset="custom" url="assets/marker2.patt" emitevents="true">
-                <a-entity id="model2" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset2" gesture-handler></a-entity>
-            </a-marker>
-
-            <!-- Marker 3 with GLB asset 3 -->
-            <a-marker id="marker3" type="pattern" preset="custom" url="assets/marker3.patt" emitevents="true">
-                <a-entity id="model3" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset3" gesture-handler></a-entity>
-            </a-marker>
-
-            <!-- Marker 4 with GLB asset 4 -->
-            <a-marker id="marker4" type="pattern" preset="custom" url="assets/marker4.patt" emitevents="true">
-                <a-entity id="model4" scale="0.7 0.7 0.7" animation-mixer="loop: repeat" gltf-model="#asset4" gesture-handler></a-entity>
-            </a-marker>
-
-            <!-- Marker 5 with MP4 video -->
-            <a-marker id="marker5" type="pattern" preset="custom" url="assets/marker5.patt" emitevents="true">
-                <a-video src="#video5" width="1.5" height="0.85" scale="1 1 1"></a-video>
-            </a-marker>
-
-            <!-- Camera -->
             <a-entity camera></a-entity>
         </a-scene>
     </body>
